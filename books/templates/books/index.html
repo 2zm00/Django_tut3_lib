@@ -1,0 +1,20 @@
+
+{% block content %}
+  <h1>Book List</h1>
+  {% if book_list %}
+    <ul>
+      {% for book in book_list %}
+      <li>
+          <a href="{% url 'books:detail' book.pk %}">
+          {{ book.title }} ({{ book.author }})</a>
+      </li>
+      {% endfor %}
+      
+      
+      
+    </ul>
+    <div><a href="{% url 'books:create' %}"> 책 추가하기</a></div>
+  {% else %}
+    <p>There are no books available.</p>
+  {% endif %}
+{% endblock %}

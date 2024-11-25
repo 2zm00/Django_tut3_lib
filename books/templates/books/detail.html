@@ -1,0 +1,21 @@
+{% block content %}
+<h1>{{ book.title }}</h1>
+<p>저자: {{ book.author }}</p>
+<p>출판일: {{ book.pub_date|date:"Y-m-d" }}</p>
+<a href="{% url 'books:delete' book.pk%}">해당 책 삭제하기</a>
+
+<h2>리뷰</h2>
+{% if book.review_set.all %}
+    {% for review in book.review_set.all %}
+        <div class="review">
+            <p>{{ review.review_text }}</p>
+            <p>작성일: {{ review.pub_date|date:"Y-m-d" }}</p>
+			<a href="{% url 'books:delete_review' book_pk=book.pk review_pk=review.pk %}">리뷰 삭제하기</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>등록된 리뷰가 없습니다.</p>
+{% endif %}
+<a href="{% url 'books:create_review' book.pk %}">리뷰 추가하기</a>
+
+{% endblock %}

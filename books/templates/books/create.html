@@ -1,0 +1,8 @@
+<h1>책 추가하기</h1>
+
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+
+	<button type="submit">책 리스트에 추가하기</button>
+</form>

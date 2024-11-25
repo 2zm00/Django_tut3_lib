@@ -1,0 +1,10 @@
+<h1>{{ book.title }} 추가하기</h1>
+
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+
+    <button type="submit"> 추가</button>
+</form>
+
+<a href="{% url 'books:detail' pk=view.kwargs.pk %}">돌아가기</a>
